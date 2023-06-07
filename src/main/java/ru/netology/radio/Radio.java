@@ -2,32 +2,52 @@ package ru.netology.radio;
 
 public class Radio {
 
-    //Номер текущей радиостанции
+    private int currentRadioStation;
 
-    public int currentRadioStation;
+    private int currentVolume;
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
     }
 
-    int setToMaxRadioStation() {
-        return currentRadioStation = 9;
-    }
-
-    int setToMinRadioStation() {
-        return currentRadioStation = 0;
+    public int getCurrentVolume() {
+        return currentVolume;
     }
 
     public void setCurrentRadioStation(int newCurrentRadioStation) {
-        if (newCurrentRadioStation <= 0) {
-            setToMinRadioStation();
+        if (newCurrentRadioStation < 0) {
             return;
         }
-        if (newCurrentRadioStation >= 9) {
-            setToMaxRadioStation();
+        if (newCurrentRadioStation > 9) {
             return;
         }
         currentRadioStation = newCurrentRadioStation;
+    }
+
+    public void setCurrentVolume(int newCurrentVolume) {
+        if (newCurrentVolume < 0) {
+            return;
+        }
+        if (newCurrentVolume > 100) {
+            return;
+        }
+        currentVolume = newCurrentVolume;
+    }
+
+    public void setToMaxRadioStation() {
+        currentRadioStation = 9;
+    }
+
+    public void setToMinRadioStation() {
+        currentRadioStation = 0;
+    }
+
+    public void setToMaxVolume() {
+        currentVolume = 100;
+    }
+
+    public void setToMinVolume() {
+        currentVolume = 0;
     }
 
     public void nextRadioStation() {
@@ -44,34 +64,6 @@ public class Radio {
         } else {
             setToMaxRadioStation();
         }
-    }
-
-    //Громкость звука
-
-    public int currentVolume;
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    int setToMaxVolume() {
-        return currentVolume = 100;
-    }
-
-    int setToMinVolume() {
-        return currentVolume = 0;
-    }
-
-    public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume <= 0) {
-            setToMinVolume();
-            return;
-        }
-        if (newCurrentVolume >= 100) {
-            setToMaxVolume();
-            return;
-        }
-        currentVolume = newCurrentVolume;
     }
 
     public void augmentVolume() {
